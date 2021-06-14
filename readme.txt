@@ -5,7 +5,7 @@ Tags: shortcodes
 Requires at least: 5.7
 Tested up to: 5.7.2
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,10 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 ```
 
 == Changelog ==
+
+= 0.2.0 =
+* Adding "Past Event" logic to `[webinar_registration_link]`.
+* Adding Elementor button style for `[webinar_registration_link]`.
 
 = 0.1.0 =
 * Initial implementation of the `[webinar_registration_link]` shortcode.
