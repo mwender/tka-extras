@@ -19,6 +19,7 @@ This plugin provides extra functionality for the SFG Medicare website.
 
 Add `[webinar_registration_link]` to any event post to link to the Webinar Registration page with the event date/time matching the event where you added the shortcode.
 
+```
 /**
  * Returns a link to the webinar registration page.
  *
@@ -28,6 +29,7 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
  *
  * @return     string  The webinar link.
  */
+```
 
 ## Changelog ##
 
