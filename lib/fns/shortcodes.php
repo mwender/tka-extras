@@ -38,7 +38,7 @@ function get_webinar_link( $atts ){
     return '<div class="elementor-button-wrapper" style="margin: 1em 0;">
       <a href="' . $args['registration_link'] . '?datetime=' . urlencode( $event_details ) . '" class="elementor-button-link elementor-button elementor-size-md" role="button">
             <span class="elementor-button-content-wrapper">
-            <span class="elementor-button-text">Register for this Webinar</span>
+            <span class="elementor-button-text"><strong>Register for this Webinar</strong> - ' . $event_details . '</span>
     </span>
           </a>
     </div>';
