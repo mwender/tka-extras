@@ -33,6 +33,9 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 
 ## Changelog ##
 
+### 0.3.0 ###
+* Adding event time to registration link.
+
 ### 0.2.0 ###
 * Adding "Past Event" logic to `[webinar_registration_link]`.
 * Adding Elementor button style for `[webinar_registration_link]`.
