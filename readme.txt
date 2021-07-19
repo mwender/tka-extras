@@ -5,7 +5,7 @@ Tags: shortcodes
 Requires at least: 5.7
 Tested up to: 5.7.2
 Requires PHP: 7.4
-Stable tag: 0.2.0
+Stable tag: 0.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,7 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 = 0.4.0 =
 * Saving ACF settings to `lib/acf-json/`.
 * Adding custom columns to Staff Member admin listing.
+* Handlebars processing for templates.
 
 = 0.3.0 =
 * Adding event time to registration link.
