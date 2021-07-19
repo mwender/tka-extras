@@ -16,6 +16,7 @@
 define( 'SFG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SFG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
+require_once( SFG_PLUGIN_PATH . 'lib/fns/acf-json-save-point.php' );
 require_once( SFG_PLUGIN_PATH . 'lib/fns/shortcodes.php' );
 require_once( SFG_PLUGIN_PATH . 'lib/fns/utilities.php' );
 

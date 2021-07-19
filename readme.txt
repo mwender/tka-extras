@@ -33,6 +33,9 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 
 == Changelog ==
 
+= 0.4.0 =
+* Saving ACF settings to `lib/acf-json/`.
+
 = 0.3.0 =
 * Adding event time to registration link.
 
