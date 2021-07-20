@@ -14,6 +14,6 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_scripts' );
  * Custom styles for the WP Admin
  */
 function custom_admin_styles(){
-  wp_enqueue_style( 'myndyou-admin-styles', plugin_dir_url( __FILE__ ) . '../css/admin.css', null, filemtime( plugin_dir_path( __FILE__ ) . '../css/admin.css' ) );
+  wp_enqueue_style( 'myndyou-admin-styles', SFG_PLUGIN_URL . 'lib/dist/admin.css', null, filemtime( SFG_PLUGIN_PATH . 'lib/dist/admin.css' ) );
 }
 add_action( 'admin_head', __NAMESPACE__ . '\\custom_admin_styles' );
