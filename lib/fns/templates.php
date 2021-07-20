@@ -1,5 +1,5 @@
 <?php
-namespace sfgmedicare\fns\templates;
+namespace sfgmedicare\templates;
 
 function render_template( $filename = '', $data = [] ){
   if( empty( $filename ) )
@@ -15,8 +15,8 @@ function render_template( $filename = '', $data = [] ){
   $theme_template = \trailingslashit( $theme_path ) . 'sfgmedicare-templates/' . $filename . '.hbs';
   $theme_template_compiled = \trailingslashit( $theme_path ) . 'sfgmedicare-templates/compiled/' . $filename . '.php';
 
-  $plugin_template = trailingslashit( DONMAN_DIR ) . 'lib/templates/' . $filename . '.hbs';
-  $plugin_template_compiled = \trailingslashit( DONMAN_DIR ) . 'lib/templates/compiled/' . $filename . '.php';
+  $plugin_template = SFG_PLUGIN_PATH . 'lib/templates/' . $filename . '.hbs';
+  $plugin_template_compiled = SFG_PLUGIN_PATH . 'lib/templates/compiled/' . $filename . '.php';
 
   if( file_exists( $theme_template ) ){
     if( ! file_exists( $theme_template_compiled ) ){
