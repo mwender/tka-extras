@@ -1,6 +1,7 @@
 <?php
 namespace sfgmedicare\shortcodes;
 use function sfgmedicare\utilities\{get_alert};
+use function sfgmedicare\templates\{render_template};
 
 /**
  * Returns a link to the webinar registration page.
@@ -45,3 +46,66 @@ function get_webinar_link( $atts ){
   }
 }
 add_shortcode( 'webinar_registration_link', __NAMESPACE__ . '\\get_webinar_link'  );
+
+/**
+ * Lists Team Member CPTs.
+ *
+ * @param      array  $atts {
+ *   @type  string  $type  Staff Type taxonomy slug.
+ * }
+ *
+ * @return     string  HTML for listing Team Member CPTs.
+ */
+function team_member_list( $atts ){
+  $args = shortcode_atts([
+    'type' => null
+  ], $atts );
+
+  $query_args = [
+    'numberposts' => -1,
+    'post_type'   => 'team_member',
+    'orderby'     => 'menu_order',
+    'order'       => 'ASC',
+  ];
+  if( ! is_null( $args['type'] ) ){
+    $type = get_term_by( 'slug', strtolower( $args['type'] ), 'staff_type' );
+    if( ! $type )
+      return get_alert( ['title' => 'Staff Type Not Found', 'description' => '<strong>No `' . $args['type'] . '` Staff Type</strong><br>We could not locate the Staff Type you entered. Please check your spelling, and make sure the <code>type</code> you entered matches one of the Staff Types in the admin.'] );
+
+    $query_args['tax_query'] = [
+      [
+        'taxonomy'  => 'staff_type',
+        'field'     => 'slug',
+        'terms'     => $args['type'],
+      ]
+    ];
+  }
+
+  $team_members = get_posts( $query_args );
+  if( ! $team_members )
+    return get_alert( ['title' => 'No Team Members Found', 'description' => '<strong>No Team Members Found</strong><br/>No Team Members found. Please check your shortcode parameters.'] );
+
+  $data = [];
+  foreach( $team_members as $team_member ){
+
+    $name = $team_member->post_title;
+    $name_array = explode( ' ', $name );
+    $lastname = array_pop( $name_array );
+    $firstname = implode( ' ', $name_array );
+    $meta = get_fields( $team_member->ID, false );
+
+    $data['team_members'][] = [
+      'name' => $name,
+      'firstname' => $firstname,
+      'permalink' => get_permalink( $team_member->ID ),
+      'photo'     => get_the_post_thumbnail_url( $team_member->ID, 'large' ),
+      'title'     => $meta['title'],
+      'bio'       => get_field( 'bio', $team_member->ID ),
+      'email'     => $meta['email'],
+      'phone'     => $meta['office_phone'],
+    ];
+  }
+
+  return render_template( 'team-members', $data );
+}
+add_shortcode( 'team_member_list', __NAMESPACE__ . '\\team_member_list' );
