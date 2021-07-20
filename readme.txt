@@ -5,7 +5,7 @@ Tags: shortcodes
 Requires at least: 5.7
 Tested up to: 5.7.2
 Requires PHP: 7.4
-Stable tag: 0.4.0
+Stable tag: 0.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,6 +14,22 @@ Extras for the SFG Medicare website.
 == Description ==
 
 This plugin provides extra functionality for the SFG Medicare website.
+
+=== Team Member List Shortcode ===
+
+Add `[team_member_list]` to list Team Member CPTs.
+
+```
+/**
+ * Lists Team Member CPTs.
+ *
+ * @param      array  $atts {
+ *   @type  string  $type  Staff Type taxonomy slug.
+ * }
+ *
+ * @return     string  HTML for listing Team Member CPTs.
+ */
+```
 
 === Webinar Registration Link Shortcode ===
 
@@ -32,6 +48,12 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 ```
 
 == Changelog ==
+
+= 0.5.0 =
+* New shortcode: `[team_member_list/]`.
+* Adding CSS/SCSS.
+* CSS build via NPM scripts.
+* Adding `SFG_CSS_DIR` and `SFG_DEV_ENV` constants.
 
 = 0.4.0 =
 * Saving ACF settings to `lib/acf-json/`.

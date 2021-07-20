@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name:     SFG Medicare Extras
- * Plugin URI:      PLUGIN SITE HERE
+ * Plugin URI:      https://github.com/mwender/sfgmedicare-extras
  * Description:     Various extensions for the SFG Medicare website
  * Author:          TheWebist
  * Author URI:      https://mwender.com
  * Text Domain:     sfgmedicare-extras
  * Domain Path:     /languages
- * Version:         0.4.0
+ * Version:         0.5.0
  *
  * @package         Sfgmedicare_Extras
  */
