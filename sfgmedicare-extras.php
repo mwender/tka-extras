@@ -13,6 +13,9 @@
  */
 
 // Your code starts here.
+$css_dir = ( stristr( site_url(), '.local' ) || SCRIPT_DEBUG )? 'css' : 'dist' ;
+define( 'SFG_CSS_DIR', $css_dir );
+define( 'SFG_DEV_ENV', stristr( site_url(), '.local' ) );
 define( 'SFG_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SFG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
