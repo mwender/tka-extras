@@ -1,6 +1,6 @@
 <?php
 namespace sfgmedicare\shortcodes;
-use function sfgmedicare\utilities\{get_alert};
+use function sfgmedicare\utilities\{get_alert,posts_orderby_lastname};
 use function sfgmedicare\templates\{render_template};
 
 /**
@@ -51,21 +51,28 @@ add_shortcode( 'webinar_registration_link', __NAMESPACE__ . '\\get_webinar_link'
  * Lists Team Member CPTs.
  *
  * @param      array  $atts {
- *   @type  string  $type  Staff Type taxonomy slug.
+ *   @type  string  $type    Staff Type taxonomy slug.
+ *   @type  string  $orderby Value used to order the query's results. Defaults to `title`.
+ *   @type  string  $order   Either ASC or DESC. Defaults to `ASC`.
  * }
  *
  * @return     string  HTML for listing Team Member CPTs.
  */
 function team_member_list( $atts ){
   $args = shortcode_atts([
-    'type' => null
+    'type'    => null,
+    'orderby' => 'title',
+    'order'   => 'ASC',
   ], $atts );
+
+  $orderby = ( ! in_array( $args['orderby'], [ 'title', 'menu_order' ] ) )? 'title' : $args['orderby'];
+  $order = ( ! in_array( $args['order'], [ 'ASC', 'DESC' ] ) )? 'ASC' : $args['order'];
 
   $query_args = [
     'numberposts' => -1,
     'post_type'   => 'team_member',
-    'orderby'     => 'menu_order',
-    'order'       => 'ASC',
+    'orderby'     => $orderby,
+    'order'       => $order,
   ];
   if( ! is_null( $args['type'] ) ){
     $type = get_term_by( 'slug', strtolower( $args['type'] ), 'staff_type' );
@@ -81,30 +88,46 @@ function team_member_list( $atts ){
     ];
   }
 
-  $team_members = get_posts( $query_args );
-  if( ! $team_members )
+  // Sort by last name
+  if( 'title' == $orderby )
+    add_filter( 'posts_orderby', '\\sfgmedicare\\utilities\\posts_orderby_lastname' );
+
+  // Query team members
+  $team_member_query = new \WP_Query( $query_args );
+
+  // Remove sort by last name filter
+  if( 'title' == $orderby )
+    remove_filter( 'posts_orderby', '\\sfgmedicare\\utilities\\posts_orderby_lastname' );
+
+  if( ! $team_member_query->have_posts() )
     return get_alert( ['title' => 'No Team Members Found', 'description' => '<strong>No Team Members Found</strong><br/>No Team Members found. Please check your shortcode parameters.'] );
 
   $data = [];
-  foreach( $team_members as $team_member ){
+  if( $team_member_query->have_posts() ){
+    while( $team_member_query->have_posts() ): $team_member_query->the_post();
+      $name = get_the_title();
+      $name_array = explode( ' ', $name );
+      $lastname = array_pop( $name_array );
+      $firstname = implode( ' ', $name_array );
+      $meta = get_fields( get_the_ID(), false );
 
-    $name = $team_member->post_title;
-    $name_array = explode( ' ', $name );
-    $lastname = array_pop( $name_array );
-    $firstname = implode( ' ', $name_array );
-    $meta = get_fields( $team_member->ID, false );
+      $phone = ( ! empty( $meta['office_phone'] ) )? $meta['office_phone'] : '(865) 777-0153' ;
+      $tel = ( ! empty( $meta['office_phone'] ) )? $meta['office_phone'] : '865-777-0153';
 
-    $data['team_members'][] = [
-      'name' => $name,
-      'firstname' => $firstname,
-      'permalink' => get_permalink( $team_member->ID ),
-      'photo'     => get_the_post_thumbnail_url( $team_member->ID, 'large' ),
-      'title'     => $meta['title'],
-      'bio'       => get_field( 'bio', $team_member->ID ),
-      'email'     => $meta['email'],
-      'phone'     => $meta['office_phone'],
-    ];
+      $data['team_members'][] = [
+        'name' => $name,
+        'firstname' => $firstname,
+        'permalink' => get_permalink( get_the_ID() ),
+        'photo'     => get_the_post_thumbnail_url( get_the_ID(), 'large' ),
+        'title'     => $meta['title'],
+        'bio'       => get_field( 'bio', get_the_ID() ),
+        'email'     => $meta['email'],
+        'phone'     => $phone,
+        'tel'       => $tel,
+      ];
+    endwhile;
   }
+  wp_reset_postdata();
 
   return render_template( 'team-members', $data );
 }

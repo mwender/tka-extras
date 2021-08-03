@@ -5,7 +5,7 @@
 **Requires at least:** 5.7  
 **Tested up to:** 5.7.2  
 **Requires PHP:** 7.4  
-**Stable tag:** 0.5.0  
+**Stable tag:** 0.6.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -24,7 +24,9 @@ Add `[team_member_list]` to list Team Member CPTs.
  * Lists Team Member CPTs.
  *
  * @param      array  $atts {
- *   @type  string  $type  Staff Type taxonomy slug.
+ *   @type  string  $type    Staff Type taxonomy slug.
+ *   @type  string  $orderby Value used to order the query's results. Defaults to `title`.
+ *   @type  string  $order   Either ASC or DESC. Defaults to `ASC`.
  * }
  *
  * @return     string  HTML for listing Team Member CPTs.
@@ -48,6 +50,11 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 ```
 
 ## Changelog ##
+
+### 0.6.0 ###
+* Adding `orderby` option for `[team_member_list/]`. Ordering by `title` uses a special query filter which sorts by the last word in the Team Member's title (i.e. the last name).
+* Outputting default phone number when a Team Member's phone number is empty.
+* Setting value for Team Member `$data['tel']` for the `tel` link in the Handlebars template for Team Members.
 
 ### 0.5.0 ###
 * New shortcode: `[team_member_list/]`.

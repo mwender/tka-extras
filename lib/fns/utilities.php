@@ -28,3 +28,15 @@ function get_alert( $atts ){
   $html = file_get_contents( SFG_PLUGIN_PATH . 'lib/html/alert.html' );
   return str_replace( $search, $replace, $html );
 }
+
+/**
+ * Returns SQL for ordering posts by the last word in a post title.
+ *
+ * @param      string  $orderby_statement  The orderby statement
+ *
+ * @return     string  SQL for ordering posts.
+ */
+function posts_orderby_lastname( $orderby_statement ){
+  $orderby_statement = "RIGHT(post_title, LOCATE(' ', REVERSE(post_title)) - 1)";
+  return $orderby_statement;
+}
