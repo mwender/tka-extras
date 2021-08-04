@@ -5,7 +5,7 @@ Tags: shortcodes
 Requires at least: 5.7
 Tested up to: 5.7.2
 Requires PHP: 7.4
-Stable tag: 0.6.0
+Stable tag: 0.7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,9 +24,10 @@ Add `[team_member_list]` to list Team Member CPTs.
  * Lists Team Member CPTs.
  *
  * @param      array  $atts {
- *   @type  string  $type    Staff Type taxonomy slug.
- *   @type  string  $orderby Value used to order the query's results. Defaults to `title`.
- *   @type  string  $order   Either ASC or DESC. Defaults to `ASC`.
+ *   @type  string  $type       Staff Type taxonomy slug.
+ *   @type  string  $orderby    Value used to order the query's results. Defaults to `title`.
+ *   @type  string  $order      Either ASC or DESC. Defaults to `ASC`.
+ *   @type  bool    $linktopage Should we link to the Team Member's page? Defaults to TRUE.
  * }
  *
  * @return     string  HTML for listing Team Member CPTs.
@@ -50,6 +51,9 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 ```
 
 == Changelog ==
+
+= 0.7.0 =
+* Adding `linktopage` option for `[team_member_list]` shortcode.
 
 = 0.6.0 =
 * Adding `orderby` option for `[team_member_list/]`. Ordering by `title` uses a special query filter which sorts by the last word in the Team Member's title (i.e. the last name).

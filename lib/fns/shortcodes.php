@@ -51,19 +51,25 @@ add_shortcode( 'webinar_registration_link', __NAMESPACE__ . '\\get_webinar_link'
  * Lists Team Member CPTs.
  *
  * @param      array  $atts {
- *   @type  string  $type    Staff Type taxonomy slug.
- *   @type  string  $orderby Value used to order the query's results. Defaults to `title`.
- *   @type  string  $order   Either ASC or DESC. Defaults to `ASC`.
+ *   @type  string  $type       Staff Type taxonomy slug.
+ *   @type  string  $orderby    Value used to order the query's results. Defaults to `title`.
+ *   @type  string  $order      Either ASC or DESC. Defaults to `ASC`.
+ *   @type  bool    $linktopage Should we link to the Team Member's page? Defaults to TRUE.
  * }
  *
  * @return     string  HTML for listing Team Member CPTs.
  */
 function team_member_list( $atts ){
   $args = shortcode_atts([
-    'type'    => null,
-    'orderby' => 'title',
-    'order'   => 'ASC',
+    'type'        => null,
+    'orderby'     => 'title',
+    'order'       => 'ASC',
+    'linktopage'  => true,
   ], $atts );
+  $data = []; // The data we'll pass into our handlebars template
+
+  $args['linktopage'] = filter_var( $args['linktopage'], FILTER_VALIDATE_BOOLEAN );
+  $data['linktopage'] = $args['linktopage'];
 
   $orderby = ( ! in_array( $args['orderby'], [ 'title', 'menu_order' ] ) )? 'title' : $args['orderby'];
   $order = ( ! in_array( $args['order'], [ 'ASC', 'DESC' ] ) )? 'ASC' : $args['order'];
@@ -91,10 +97,8 @@ function team_member_list( $atts ){
   // Sort by last name
   if( 'title' == $orderby )
     add_filter( 'posts_orderby', '\\sfgmedicare\\utilities\\posts_orderby_lastname' );
-
   // Query team members
   $team_member_query = new \WP_Query( $query_args );
-
   // Remove sort by last name filter
   if( 'title' == $orderby )
     remove_filter( 'posts_orderby', '\\sfgmedicare\\utilities\\posts_orderby_lastname' );
@@ -102,7 +106,6 @@ function team_member_list( $atts ){
   if( ! $team_member_query->have_posts() )
     return get_alert( ['title' => 'No Team Members Found', 'description' => '<strong>No Team Members Found</strong><br/>No Team Members found. Please check your shortcode parameters.'] );
 
-  $data = [];
   if( $team_member_query->have_posts() ){
     while( $team_member_query->have_posts() ): $team_member_query->the_post();
       $name = get_the_title();

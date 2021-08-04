@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-9">
         <h3>
-          <a href="{{permalink}}">{{name}}</a>
+          {{#if ../linktopage}}<a href="{{permalink}}">{{/if}}{{name}}{{#if ../linktopage}}</a>{{/if}}
           <span class="">{{title}}</span>
         </h3>
         {{{bio}}}
