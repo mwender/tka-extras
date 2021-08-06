@@ -75,10 +75,10 @@ function team_member_list( $atts ){
   $order = ( ! in_array( $args['order'], [ 'ASC', 'DESC' ] ) )? 'ASC' : $args['order'];
 
   $query_args = [
-    'numberposts' => -1,
-    'post_type'   => 'team_member',
-    'orderby'     => $orderby,
-    'order'       => $order,
+    'posts_per_page'  => -1,
+    'post_type'       => 'team_member',
+    'orderby'         => $orderby,
+    'order'           => $order,
   ];
   if( ! is_null( $args['type'] ) ){
     $type = get_term_by( 'slug', strtolower( $args['type'] ), 'staff_type' );

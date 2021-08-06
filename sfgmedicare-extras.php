@@ -7,7 +7,7 @@
  * Author URI:      https://mwender.com
  * Text Domain:     sfgmedicare-extras
  * Domain Path:     /languages
- * Version:         0.7.0
+ * Version:         0.7.1
  *
  * @package         Sfgmedicare_Extras
  */

@@ -5,7 +5,7 @@
 **Requires at least:** 5.7  
 **Tested up to:** 5.7.2  
 **Requires PHP:** 7.4  
-**Stable tag:** 0.7.0  
+**Stable tag:** 0.7.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -51,6 +51,9 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 ```
 
 ## Changelog ##
+
+### 0.7.1 ###
+* Updating `[team_member_list/]` query variable from `numberposts` to `posts_per_page` to match expected parameter in WP_Query.
 
 ### 0.7.0 ###
 * Adding `linktopage` option for `[team_member_list]` shortcode.
