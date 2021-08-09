@@ -5,7 +5,7 @@
 **Requires at least:** 5.7  
 **Tested up to:** 5.7.2  
 **Requires PHP:** 7.4  
-**Stable tag:** 0.8.0  
+**Stable tag:** 0.8.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -14,6 +14,24 @@ Extras for the SFG Medicare website.
 ## Description ##
 
 This plugin provides extra functionality for the SFG Medicare website.
+
+# Sub Pages List #
+
+Add `[subpage_list/]` to display a list of sub pages.
+
+```
+/**
+ * Show a listing of child pages.
+ *
+ * @param      array  $atts {
+ *   @type  string  $orderby    The column we are ordering by. Defaults to "menu_order".
+ *   @type  string  $sort       How we are ordering the results. Defaults to ASC.
+ *   @type  string  $parent     The page of the child pages we want to list. Defaults to `null`.
+ * }
+ *
+ * @return     string  HTML for the subpage list.
+ */
+```
 
 # Team Member List Shortcode #
 

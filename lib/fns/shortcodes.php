@@ -48,11 +48,12 @@ function get_webinar_link( $atts ){
 add_shortcode( 'webinar_registration_link', __NAMESPACE__ . '\\get_webinar_link'  );
 
 /**
- * Lists the subpages of the current page.
+ * Show a listing of child pages.
  *
  * @param      array  $atts {
  *   @type  string  $orderby    The column we are ordering by. Defaults to "menu_order".
  *   @type  string  $sort       How we are ordering the results. Defaults to ASC.
+ *   @type  string  $parent     The page of the child pages we want to list. Defaults to `null`.
  * }
  *
  * @return     string  HTML for the subpage list.
@@ -61,6 +62,7 @@ function subpage_list( $atts ){
   $args = shortcode_atts( [
     'orderby' => 'menu_order',
     'sort'    => 'ASC',
+    'parent'  => null,
   ], $atts );
 
   global $post;
@@ -69,6 +71,14 @@ function subpage_list( $atts ){
     'sort_column' => $args['orderby'],
     'sort_order'  => $args['sort'],
   ];
+
+  if( ! is_null( $args['parent'] ) ){
+    $args['parent'] = html_entity_decode( $args['parent'] );
+    $parent = get_page_by_title( $args['parent'] );
+    if( $parent )
+      $query_args['parent'] = $parent->ID;
+  }
+
   $pages = get_pages( $query_args );
   foreach( $pages as $page ){
     $data['pages'][] = [
