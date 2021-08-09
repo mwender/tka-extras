@@ -47,6 +47,16 @@ function get_webinar_link( $atts ){
 }
 add_shortcode( 'webinar_registration_link', __NAMESPACE__ . '\\get_webinar_link'  );
 
+/**
+ * Lists the subpages of the current page.
+ *
+ * @param      array  $atts {
+ *   @type  string  $orderby    The column we are ordering by. Defaults to "menu_order".
+ *   @type  string  $sort       How we are ordering the results. Defaults to ASC.
+ * }
+ *
+ * @return     string  HTML for the subpage list.
+ */
 function subpage_list( $atts ){
   $args = shortcode_atts( [
     'orderby' => 'menu_order',
