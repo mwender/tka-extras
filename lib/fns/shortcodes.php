@@ -47,6 +47,30 @@ function get_webinar_link( $atts ){
 }
 add_shortcode( 'webinar_registration_link', __NAMESPACE__ . '\\get_webinar_link'  );
 
+function subpage_list( $atts ){
+  $args = shortcode_atts( [
+    'orderby' => 'menu_order',
+    'sort'    => 'ASC',
+  ], $atts );
+
+  global $post;
+  $query_args = [
+    'parent'      => $post->ID,
+    'sort_column' => $args['orderby'],
+    'sort_order'  => $args['sort'],
+  ];
+  $pages = get_pages( $query_args );
+  foreach( $pages as $page ){
+    $data['pages'][] = [
+      'permalink' => get_page_link( $page->ID ),
+      'title'     => get_the_title( $page->ID ),
+    ];
+  }
+
+  return render_template( 'subpage-list', $data );
+}
+add_shortcode( 'subpage_list', __NAMESPACE__ . '\\subpage_list' );
+
 /**
  * Lists Team Member CPTs.
  *
