@@ -5,7 +5,7 @@
 **Requires at least:** 5.7  
 **Tested up to:** 5.7.2  
 **Requires PHP:** 7.4  
-**Stable tag:** 0.8.1  
+**Stable tag:** 0.9.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -14,6 +14,28 @@ Extras for the SFG Medicare website.
 ## Description ##
 
 This plugin provides extra functionality for the SFG Medicare website.
+
+# Elementor Style Button Shortcode #
+
+Use `[button/]` to render an "Elementor-style" button.
+
+```
+/**
+ * Renders an Elementor button.
+ *
+ * @param      array  $atts {
+ *   @type  string  $icon       Font Awesome icon class name.
+ *   @type  string  $icon_align Aligns the icon `left` or `right`. Default `left`.
+ *   @type  string  $link       The URL the button will point to.
+ *   @type  string  $target     Value of the target attribute for the anchor tag. Defaults to `_self`.
+ *   @type  string  $text       The text for the button. Default "Click Here".
+ *   @type  string  $size       The size of the button ( xs, sm, md, lg, xl ). Defaults to `sm`.
+ *   @type  string  $style      Styling applied to the style attribute of the parent anchor.
+ * }
+ *
+ * @return     string  The HTML for the button.
+ */
+```
 
 # Sub Pages List #
 
@@ -69,6 +91,12 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 ```
 
 ## Changelog ##
+
+### 0.9.0 ###
+* Adding `[button/]` shortcode for rendering Elementor-style buttons.
+
+### 0.8.1 ###
+* Adding `parent` attribute to `[subpage_list/]`.
 
 ### 0.8.0 ###
 * Adding `[subpage_list/]` shortcode for listing subpages of the current page.
