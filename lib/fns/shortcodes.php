@@ -103,6 +103,7 @@ function subpage_list( $atts ){
     'title_li'    => null,
     'sort_column' => $args['orderby'],
     'sort_order'  => $args['sort'],
+    'echo'        => false,
   ];
 
   if( ! is_null( $args['parent'] ) ){
