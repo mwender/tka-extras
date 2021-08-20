@@ -99,7 +99,8 @@ function subpage_list( $atts ){
 
   global $post;
   $query_args = [
-    'parent'      => $post->ID,
+    'child_of'    => $post->ID,
+    'title_li'    => null,
     'sort_column' => $args['orderby'],
     'sort_order'  => $args['sort'],
   ];
@@ -110,7 +111,9 @@ function subpage_list( $atts ){
     if( $parent )
       $query_args['parent'] = $parent->ID;
   }
+  return wp_list_pages( $query_args );
 
+  /*
   $pages = get_pages( $query_args );
   foreach( $pages as $page ){
     $data['pages'][] = [
@@ -118,8 +121,8 @@ function subpage_list( $atts ){
       'title'     => get_the_title( $page->ID ),
     ];
   }
-
   return render_template( 'subpage-list', $data );
+  /**/
 }
 add_shortcode( 'subpage_list', __NAMESPACE__ . '\\subpage_list' );
 
