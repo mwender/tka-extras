@@ -111,7 +111,7 @@ function subpage_list( $atts ){
     if( $parent )
       $query_args['parent'] = $parent->ID;
   }
-  return wp_list_pages( $query_args );
+  return '<ul>' . wp_list_pages( $query_args ) . '</ul>';
 
   /*
   $pages = get_pages( $query_args );
