@@ -30,8 +30,10 @@ use \LightnCandy\SafeString as SafeString;use \LightnCandy\Runtime as LR;return 
     );
     
     $inary=is_array($in);
-    return '<div class="elementor-button-wrapper">
-  <a href="'.htmlspecialchars((string)(($inary && isset($in['link'])) ? $in['link'] : null), ENT_QUOTES, 'UTF-8').'" target="'.htmlspecialchars((string)(($inary && isset($in['target'])) ? $in['target'] : null), ENT_QUOTES, 'UTF-8').'" class="elementor-button-link elementor-button elementor-size-'.htmlspecialchars((string)(($inary && isset($in['size'])) ? $in['size'] : null), ENT_QUOTES, 'UTF-8').'" '.((LR::ifvar($cx, (($inary && isset($in['style'])) ? $in['style'] : null), false)) ? 'style="'.htmlspecialchars((string)(($inary && isset($in['style'])) ? $in['style'] : null), ENT_QUOTES, 'UTF-8').'"' : '').' role="button">
+    return '<h3>Schedule a Consultation</h3>
+<p>Schedule an appointment with '.htmlspecialchars((string)(($inary && isset($in['title'])) ? $in['title'] : null), ENT_QUOTES, 'UTF-8').' by clicking below. Then select your preferred date and time. If you don\'t have a preference, or don\'t see your preferred time available, please add a note to the submission.</p>
+<div class="elementor-button-wrapper">
+  <a href="'.htmlspecialchars((string)(($inary && isset($in['alt_link'])) ? $in['alt_link'] : null), ENT_QUOTES, 'UTF-8').'" target="'.htmlspecialchars((string)(($inary && isset($in['target'])) ? $in['target'] : null), ENT_QUOTES, 'UTF-8').'" class="elementor-button-link elementor-button elementor-size-'.htmlspecialchars((string)(($inary && isset($in['size'])) ? $in['size'] : null), ENT_QUOTES, 'UTF-8').'" '.((LR::ifvar($cx, (($inary && isset($in['style'])) ? $in['style'] : null), false)) ? 'style="'.htmlspecialchars((string)(($inary && isset($in['style'])) ? $in['style'] : null), ENT_QUOTES, 'UTF-8').'"' : '').' role="button">
     <span class="elementor-button-content-wrapper">
 '.((LR::ifvar($cx, (($inary && isset($in['icon'])) ? $in['icon'] : null), false)) ? '      <span class="elementor-button-icon elementor-align-icon-'.htmlspecialchars((string)(($inary && isset($in['icon_align'])) ? $in['icon_align'] : null), ENT_QUOTES, 'UTF-8').'">
         <i aria-hidden="true" class="fas fa-'.htmlspecialchars((string)(($inary && isset($in['icon'])) ? $in['icon'] : null), ENT_QUOTES, 'UTF-8').'"></i>
