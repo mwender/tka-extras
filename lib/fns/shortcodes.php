@@ -127,6 +127,17 @@ function rendertemplate( $atts ){
       if( empty( $meta ) && true == $args['hideifempty'] )
         return null;
       $data[$datum[1]] = $meta;
+    } elseif ( 'post' == $datum[0] ) {
+      switch( $datum[1] ){
+        case 'title':
+        case 'post_title':
+          $data[$datum[1]] = get_the_title( $post->ID );
+          break;
+
+        default:
+          $data[$datum[1]] = 'No logic for retrieving `$post->' . esc_attr( $datum[1] ) . '`.';
+          break;
+      }
     } else {
       $data[$datum[0]] = $datum[1];
     }
