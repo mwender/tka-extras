@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-3">
       <div class="stretchy-wrapper">
-        <div class="photo" style="background-image: url('{{photo}}')"></div>
+        {{#if ../linktopage}}<a href="{{permalink}}">{{/if}}<div class="photo" style="background-image: url('{{photo}}')"></div>{{#if ../linktopage}}</a>{{/if}}
       </div>
     </div>
     <div class="col-md-9">

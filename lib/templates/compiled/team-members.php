@@ -35,7 +35,7 @@ use \LightnCandy\SafeString as SafeString;use \LightnCandy\Runtime as LR;return 
   <div class="row">
     <div class="col-md-3">
       <div class="stretchy-wrapper">
-        <div class="photo" style="background-image: url(\''.htmlspecialchars((string)(($inary && isset($in['photo'])) ? $in['photo'] : null), ENT_QUOTES, 'UTF-8').'\')"></div>
+        '.((LR::ifvar($cx, ((isset($cx['scopes'][count($cx['scopes'])-1]) && is_array($cx['scopes'][count($cx['scopes'])-1]) && isset($cx['scopes'][count($cx['scopes'])-1]['linktopage'])) ? $cx['scopes'][count($cx['scopes'])-1]['linktopage'] : null), false)) ? '<a href="'.htmlspecialchars((string)(($inary && isset($in['permalink'])) ? $in['permalink'] : null), ENT_QUOTES, 'UTF-8').'">' : '').'<div class="photo" style="background-image: url(\''.htmlspecialchars((string)(($inary && isset($in['photo'])) ? $in['photo'] : null), ENT_QUOTES, 'UTF-8').'\')"></div>'.((LR::ifvar($cx, ((isset($cx['scopes'][count($cx['scopes'])-1]) && is_array($cx['scopes'][count($cx['scopes'])-1]) && isset($cx['scopes'][count($cx['scopes'])-1]['linktopage'])) ? $cx['scopes'][count($cx['scopes'])-1]['linktopage'] : null), false)) ? '</a>' : '').'
       </div>
     </div>
     <div class="col-md-9">
