@@ -5,7 +5,7 @@
 **Requires at least:** 5.7  
 **Tested up to:** 5.7.2  
 **Requires PHP:** 7.4  
-**Stable tag:** 0.9.4  
+**Stable tag:** 0.9.5  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -36,6 +36,33 @@ Use `[button/]` to render an "Elementor-style" button.
  * @return     string  The HTML for the button.
  */
 ```
+
+# Render Template Shortcode #
+
+```
+/**
+ * Renders a handlebars template
+ *
+ * @param      array  $atts {
+ *   @type  string  $data         Key/Value pairs of data to send to the template. Formatted like
+ *                                so `key1|value1::key2|value2`. `meta` is a special key which causes the
+ *                                shortcode to check the current post for a custom field with the
+ *                                name given by the "value". Example: `meta|radius_scheduler` will
+ *                                check the current post for a meta field called `radius_scheduler`.
+ *                                If found, the $data array passed to the template will have a key
+ *                                called `radius_scheduler` with the value of the custom field.
+ *   @type  bool    $hideifempty  Used with the special key `meta` in $data. If any meta
+ *                                meta values are emtpy, hide this template if `true`.
+ *                                Defaults to TRUE.
+ *   @type  string  $hideelement  ID of an element to hide when the template rendered by
+ *                                this shortcode is shown. Default NULL.
+ *   @type  string  $template     The template we are rendering. Default NULL.
+ * }
+ *
+ * @return     string  HTML for the template.
+ */
+```
+
 
 # Sub Pages List #
 
@@ -91,6 +118,11 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 ```
 
 ## Changelog ##
+
+### 0.9.5 ###
+* Initial implementation of Radius Scheduler link option for Team Members.
+* Adding `[rendertemplate\]` shortcode.
+* Updating `get_alert()` to use Handlebars rendering.
 
 ### 0.9.4 ###
 * Adding `gettext` filter to remove "Search Results for:" from Search archive title.

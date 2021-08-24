@@ -1,5 +1,6 @@
 <?php
 namespace sfgmedicare\utilities;
+use function sfgmedicare\templates\{render_template};
 
 /**
  * Returns an HTML alert message
@@ -21,12 +22,21 @@ function get_alert( $atts ){
    'css_classes' => null,
   ], $atts );
 
-  $title = ( ! empty( $args['title'] ) )? '<span class="elementor-alert-title">' . $args['title'] . '</span>' : '' ;
+  $data = [
+    'description' => $args['description'],
+    'title'       => $args['title'],
+    'type'        => $args['type'],
+    'css_classes' => $args['css_classes'],
+  ];
 
+  return render_template( 'alert', $data );
+  /*
+  $title = ( ! empty( $args['title'] ) )? '<span class="elementor-alert-title">' . $args['title'] . '</span>' : '' ;
   $search = ['{type}', '{title}', '{description}', '{css_classes}' ];
   $replace = [ esc_attr( $args['type'] ), $title, $args['description'], $args['css_classes'] ];
   $html = file_get_contents( SFG_PLUGIN_PATH . 'lib/html/alert.html' );
   return str_replace( $search, $replace, $html );
+  /**/
 }
 
 /**
