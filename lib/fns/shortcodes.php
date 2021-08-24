@@ -124,8 +124,8 @@ function rendertemplate( $atts ){
       $meta = get_post_meta( $post->ID, $datum[1], true );
       if( is_array( $meta ) )
         $meta = $meta[0];
-      //if( empty( $meta ) )
-        //return '<p>Hide if empty.</p>';
+      if( empty( $meta ) && true == $args['hideifempty'] )
+        return null;
       $data[$datum[1]] = $meta;
     } else {
       $data[$datum[0]] = $datum[1];
