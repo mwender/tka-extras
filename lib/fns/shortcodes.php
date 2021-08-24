@@ -90,6 +90,8 @@ add_shortcode( 'webinar_registration_link', __NAMESPACE__ . '\\get_webinar_link'
  *                                check the current post for a meta field called `radius_scheduler`.
  *                                If found, the $data array passed to the template will have a key
  *                                called `radius_scheduler` with the value of the custom field.
+ *   @type  string  $hidecss      CSS selector used to hide this element if $hideifempty is TRUE.
+ *                                Default null.
  *   @type  bool    $hideifempty  Used with the special key `meta` in $data. If any meta
  *                                meta values are emtpy, hide this template if `true`.
  *                                Defaults to TRUE.
@@ -105,6 +107,7 @@ function rendertemplate( $atts ){
 
   $args = shortcode_atts( [
     'data'        => null,
+    'hidecss'     => null,
     'hideifempty' => 1,
     'hideelement' => null,
     'template'    => null,
@@ -124,8 +127,13 @@ function rendertemplate( $atts ){
       $meta = get_post_meta( $post->ID, $datum[1], true );
       if( is_array( $meta ) )
         $meta = $meta[0];
-      if( empty( $meta ) && true == $args['hideifempty'] )
-        return null;
+      if( empty( $meta ) && true == $args['hideifempty'] ){
+        if( ! empty( $args['hidecss'] ) ){
+          return '<style>' . $args['hidecss'] . '{display: none;}</style>';
+        } else {
+          return null;
+        }
+      }
       $data[$datum[1]] = $meta;
     } elseif ( 'post' == $datum[0] ) {
       switch( $datum[1] ){
