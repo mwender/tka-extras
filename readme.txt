@@ -5,7 +5,7 @@ Tags: shortcodes
 Requires at least: 5.7
 Tested up to: 5.7.2
 Requires PHP: 7.4
-Stable tag: 0.9.7
+Stable tag: 0.9.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,8 @@ Use `[button/]` to render an "Elementor-style" button.
  *                                check the current post for a meta field called `radius_scheduler`.
  *                                If found, the $data array passed to the template will have a key
  *                                called `radius_scheduler` with the value of the custom field.
+ *   @type  string  $hidecss      CSS selector used to hide this element if $hideifempty is TRUE.
+ *                                Default null.
  *   @type  bool    $hideifempty  Used with the special key `meta` in $data. If any meta
  *                                meta values are emtpy, hide this template if `true`.
  *                                Defaults to TRUE.
@@ -63,7 +65,6 @@ Use `[button/]` to render an "Elementor-style" button.
  */
 ```
 
-
 === Sub Pages List ===
 
 Add `[subpage_list/]` to display a list of sub pages.
@@ -75,7 +76,7 @@ Add `[subpage_list/]` to display a list of sub pages.
  * @param      array  $atts {
  *   @type  string  $orderby    The column we are ordering by. Defaults to "menu_order".
  *   @type  string  $sort       How we are ordering the results. Defaults to ASC.
- *   @type  string  $parent     The page of the child pages we want to list. Defaults to `null`.
+ *   @type  string  $parent     The post_title of the parent page whose child pages we want to list. Defaults to `null`.
  * }
  *
  * @return     string  HTML for the subpage list.
@@ -118,6 +119,11 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 ```
 
 == Changelog ==
+
+= 0.9.8 =
+* Linking Team Member photos in `team-members.hbs`.
+* Updating `[subpage_list/]` to respect the `parent` attribute.
+* Adding `hidecss` attribute to `[rendertemplate/]` shortcode.
 
 = 0.9.7 =
 * Adding processing for Post data to `[rendertemplate/]` shortcode.
