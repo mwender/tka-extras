@@ -13,7 +13,7 @@ Extras for the TKA website.
 
 ## Description ##
 
-This plugin provides extra functionality for the SFG Medicare website.
+This plugin provides extra functionality for The King's Academy website.
 
 # Elementor Style Button Shortcode #
 
