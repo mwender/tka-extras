@@ -1,6 +1,6 @@
 <?php
-namespace sfgmedicare\utilities;
-use function sfgmedicare\templates\{render_template};
+namespace tka\utilities;
+use function tka\templates\{render_template};
 
 /**
  * Returns an HTML alert message
@@ -34,7 +34,7 @@ function get_alert( $atts ){
   $title = ( ! empty( $args['title'] ) )? '<span class="elementor-alert-title">' . $args['title'] . '</span>' : '' ;
   $search = ['{type}', '{title}', '{description}', '{css_classes}' ];
   $replace = [ esc_attr( $args['type'] ), $title, $args['description'], $args['css_classes'] ];
-  $html = file_get_contents( SFG_PLUGIN_PATH . 'lib/html/alert.html' );
+  $html = file_get_contents( TKA_PLUGIN_PATH . 'lib/html/alert.html' );
   return str_replace( $search, $replace, $html );
   /**/
 }

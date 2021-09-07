@@ -1,6 +1,6 @@
 <?php
 
-namespace sfgmedicare\customcolumns;
+namespace tka\customcolumns;
 
 /**
  * Adds columns to the Team Member CPT
@@ -10,10 +10,10 @@ namespace sfgmedicare\customcolumns;
  * @return     array  Filtered $columns array
  */
 function set_team_member_edit_columns($columns) {
-  $columns['photo']       = __( 'Photo', 'sfgmedicare' );
-  $columns['email']       = __( 'Email', 'sfgmedicare' );
-  $columns['staff_type']  = __( 'Staff Type(s)', 'sfgmedicare' );
-  $columns['title']       = __( 'Name', 'sfgmedicare' );
+  $columns['photo']       = __( 'Photo', 'tka' );
+  $columns['email']       = __( 'Email', 'tka' );
+  $columns['staff_type']  = __( 'Staff Type(s)', 'tka' );
+  $columns['title']       = __( 'Name', 'tka' );
 
   // Re-order columns
   $columns = [

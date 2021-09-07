@@ -1,7 +1,7 @@
 <?php
-namespace sfgmedicare\shortcodes;
-use function sfgmedicare\utilities\{get_alert,posts_orderby_lastname};
-use function sfgmedicare\templates\{render_template};
+namespace tka\shortcodes;
+use function tka\utilities\{get_alert,posts_orderby_lastname};
+use function tka\templates\{render_template};
 
 /**
  * Renders an Elementor button.
@@ -253,12 +253,12 @@ function team_member_list( $atts ){
 
   // Sort by last name
   if( 'title' == $orderby )
-    add_filter( 'posts_orderby', '\\sfgmedicare\\utilities\\posts_orderby_lastname' );
+    add_filter( 'posts_orderby', '\\tka\\utilities\\posts_orderby_lastname' );
   // Query team members
   $team_member_query = new \WP_Query( $query_args );
   // Remove sort by last name filter
   if( 'title' == $orderby )
-    remove_filter( 'posts_orderby', '\\sfgmedicare\\utilities\\posts_orderby_lastname' );
+    remove_filter( 'posts_orderby', '\\tka\\utilities\\posts_orderby_lastname' );
 
   if( ! $team_member_query->have_posts() )
     return get_alert( ['title' => 'No Team Members Found', 'description' => '<strong>No Team Members Found</strong><br/>No Team Members found. Please check your shortcode parameters.'] );

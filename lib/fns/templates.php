@@ -1,5 +1,5 @@
 <?php
-namespace sfgmedicare\templates;
+namespace tka\templates;
 
 function render_template( $filename = '', $data = [] ){
   if( empty( $filename ) )
@@ -12,11 +12,11 @@ function render_template( $filename = '', $data = [] ){
   $compile = 'false';
 
   $theme_path = \get_stylesheet_directory();
-  $theme_template = \trailingslashit( $theme_path ) . 'sfgmedicare-templates/' . $filename . '.hbs';
-  $theme_template_compiled = \trailingslashit( $theme_path ) . 'sfgmedicare-templates/compiled/' . $filename . '.php';
+  $theme_template = \trailingslashit( $theme_path ) . 'tka-templates/' . $filename . '.hbs';
+  $theme_template_compiled = \trailingslashit( $theme_path ) . 'tka-templates/compiled/' . $filename . '.php';
 
-  $plugin_template = SFG_PLUGIN_PATH . 'lib/templates/' . $filename . '.hbs';
-  $plugin_template_compiled = SFG_PLUGIN_PATH . 'lib/templates/compiled/' . $filename . '.php';
+  $plugin_template = TKA_PLUGIN_PATH . 'lib/templates/' . $filename . '.hbs';
+  $plugin_template_compiled = TKA_PLUGIN_PATH . 'lib/templates/compiled/' . $filename . '.php';
 
   if( file_exists( $theme_template ) ){
     if( ! file_exists( $theme_template_compiled ) ){
@@ -84,7 +84,7 @@ function template_exists( $filename = '' ){
   $filename = str_replace( $extensions, '', $filename );
 
   $theme_path = \get_stylesheet_directory();
-  $theme_template = \trailingslashit( $theme_path ) . 'sfgmedicare-templates/' . $filename . '.hbs';
+  $theme_template = \trailingslashit( $theme_path ) . 'tka-templates/' . $filename . '.hbs';
 
   $plugin_template = trailingslashit( DONMAN_DIR ) . 'lib/templates/' . $filename . '.hbs';
 

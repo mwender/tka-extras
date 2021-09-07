@@ -1,15 +1,15 @@
 <?php
 
-function sfgmedicare_acf_json_save_point( $path ) {
+function tka_acf_json_save_point( $path ) {
   // update path
   $path = plugin_dir_path( __FILE__ ) . '../acf-json';
 
   // return
   return $path;
 }
-add_filter('acf/settings/save_json', 'sfgmedicare_acf_json_save_point');
+add_filter('acf/settings/save_json', 'tka_acf_json_save_point');
 
-function sfgmedicare_acf_json_load_point( $paths ) {
+function tka_acf_json_load_point( $paths ) {
     // remove original path
     unset($paths[0]);
 
@@ -19,4 +19,4 @@ function sfgmedicare_acf_json_load_point( $paths ) {
     // return
     return $paths;
 }
-add_filter('acf/settings/load_json', 'sfgmedicare_acf_json_load_point');
+add_filter('acf/settings/load_json', 'tka_acf_json_load_point');

@@ -1,6 +1,6 @@
 {
-    "name": "mwender/sfgmedicare-extras",
-    "description": "WordPress plugin for extending capabilities of the SFG website",
+    "name": "mwender/tka-extras",
+    "description": "WordPress plugin for extending capabilities of the TKA website",
     "type": "wordpress-plugin",
     "require": {
         "zordius/lightncandy": "^1.2"

@@ -1,4 +1,4 @@
-=== SFG Medicare Extras ===
+=== TKA Extras ===
 Contributors: TheWebist
 Donate link: https://mwender.com/
 Tags: shortcodes
@@ -9,7 +9,7 @@ Stable tag: 0.9.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Extras for the SFG Medicare website.
+Extras for the TKA website.
 
 == Description ==
 
@@ -173,7 +173,7 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 * New shortcode: `[team_member_list/]`.
 * Adding CSS/SCSS.
 * CSS build via NPM scripts.
-* Adding `SFG_CSS_DIR` and `SFG_DEV_ENV` constants.
+* Adding `TKA_CSS_DIR` and `TKA_DEV_ENV` constants.
 
 = 0.4.0 =
 * Saving ACF settings to `lib/acf-json/`.
