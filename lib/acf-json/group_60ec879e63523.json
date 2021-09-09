@@ -1,6 +1,6 @@
 {
     "key": "group_60ec879e63523",
-    "title": "Team Member Options",
+    "title": "Employee Options",
     "fields": [
         {
             "key": "field_60ec88a869150",
@@ -76,22 +76,6 @@
             "toolbar": "full",
             "media_upload": 0,
             "delay": 0
-        },
-        {
-            "key": "field_61252e4ad79e6",
-            "label": "Alternate Scheduling Link",
-            "name": "alt_link",
-            "type": "url",
-            "instructions": "If this agent uses an alternate scheduler, please provide the link here.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
         }
     ],
     "location": [
@@ -99,7 +83,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "team_member"
+                "value": "employee"
             }
         ]
     ],
