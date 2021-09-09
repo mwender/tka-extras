@@ -233,7 +233,7 @@ function team_member_list( $atts ){
 
   $query_args = [
     'posts_per_page'  => -1,
-    'post_type'       => 'team_member',
+    'post_type'       => 'employee',
     'orderby'         => $orderby,
     'order'           => $order,
   ];
