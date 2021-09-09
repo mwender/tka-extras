@@ -9,7 +9,7 @@ namespace tka\customcolumns;
  *
  * @return     array  Filtered $columns array
  */
-function set_team_member_edit_columns($columns) {
+function set_employee_edit_columns($columns) {
   $columns['photo']       = __( 'Photo', 'tka' );
   $columns['email']       = __( 'Email', 'tka' );
   $columns['staff_type']  = __( 'Staff Type(s)', 'tka' );
@@ -24,7 +24,7 @@ function set_team_member_edit_columns($columns) {
   ];
   return $columns;
 }
-add_filter( 'manage_team_member_posts_columns', __NAMESPACE__ . '\\set_team_member_edit_columns' );
+add_filter( 'manage_employee_posts_columns', __NAMESPACE__ . '\\set_employee_edit_columns' );
 
 /**
  * Populates the custom columns for the Team Member CPT admin listing.
@@ -32,7 +32,7 @@ add_filter( 'manage_team_member_posts_columns', __NAMESPACE__ . '\\set_team_memb
  * @param      string  $column   The column
  * @param      int     $post_id  The post identifier
  */
-function custom_team_member_column( $column, $post_id ){
+function custom_employee_column( $column, $post_id ){
   switch( $column ){
     case 'title':
       $title = get_post_meta( $post_id, 'title', true );
@@ -51,4 +51,4 @@ function custom_team_member_column( $column, $post_id ){
       break;
   }
 }
-add_action( 'manage_team_member_posts_custom_column', __NAMESPACE__ . '\\custom_team_member_column', 10, 2 );
+add_action( 'manage_employee_posts_custom_column', __NAMESPACE__ . '\\custom_employee_column', 10, 2 );
