@@ -45,11 +45,6 @@ use \LightnCandy\SafeString as SafeString;use \LightnCandy\Runtime as LR;return 
         </h3>
         '.(($inary && isset($in['bio'])) ? $in['bio'] : null).'
         <ul class="elementor-icon-list-items elementor">
-          <li class="elementor-icon-list-item">
-            <a href="tel:'.htmlspecialchars((string)(($inary && isset($in['tel'])) ? $in['tel'] : null), ENT_QUOTES, 'UTF-8').'" style="text-decoration: none;">
-              <span class="elementor-icon-list-icon"><i aria-hidden="true" class="fas fa-phone-square-alt"></i></span><span class="elementor-icon-list-text">'.htmlspecialchars((string)(($inary && isset($in['phone'])) ? $in['phone'] : null), ENT_QUOTES, 'UTF-8').'</span>
-            </a>
-          </li>
           '.((LR::ifvar($cx, (($inary && isset($in['email'])) ? $in['email'] : null), false)) ? '<li class="elementor-icon-list-item">
             <a href="mailto:'.htmlspecialchars((string)(($inary && isset($in['email'])) ? $in['email'] : null), ENT_QUOTES, 'UTF-8').'" style="text-decoration: none;">
               <span class="elementor-icon-list-icon"><i aria-hidden="true" class="fas fa-envelope"></i></span><span class="elementor-icon-list-text">'.htmlspecialchars((string)(($inary && isset($in['email'])) ? $in['email'] : null), ENT_QUOTES, 'UTF-8').'</span>
