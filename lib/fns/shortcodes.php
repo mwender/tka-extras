@@ -261,7 +261,7 @@ function team_member_list( $atts ){
     remove_filter( 'posts_orderby', '\\tka\\utilities\\posts_orderby_lastname' );
 
   if( ! $team_member_query->have_posts() )
-    return get_alert( ['title' => 'No Team Members Found', 'description' => '<strong>No Team Members Found</strong><br/>No Team Members found. Please check your shortcode parameters.'] );
+    return get_alert( ['title' => 'No Team Members Found', 'description' => 'No Team Members found. Please check your shortcode parameters.'] );
 
   if( $team_member_query->have_posts() ){
     while( $team_member_query->have_posts() ): $team_member_query->the_post();
