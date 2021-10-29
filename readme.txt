@@ -3,9 +3,9 @@ Contributors: TheWebist
 Donate link: https://mwender.com/
 Tags: shortcodes
 Requires at least: 5.7
-Tested up to: 5.7.2
+Tested up to: 5.8.1
 Requires PHP: 7.4
-Stable tag: 0.9.8
+Stable tag: 0.9.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,6 +119,14 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 ```
 
 == Changelog ==
+
+= 0.9.9 =
+* Renaming to "TKA Extras".
+* Adding "Employee" and "Staff Member" JSON.
+* Renaming "Staff Members" to "Employees".
+* Updating `[team_member_list]` to call Employee CPT.
+* Adding "Staff Title" to admin columns for Employee CPT.
+* Adding comma between "Staff Type(s)" in admin columns for Employee CPT.
 
 = 0.9.8 =
 * Linking Team Member photos in `team-members.hbs`.
