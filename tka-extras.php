@@ -7,7 +7,7 @@
  * Author URI:      https://mwender.com
  * Text Domain:     tka-extras
  * Domain Path:     /languages
- * Version:         0.9.9
+ * Version:         1.0.0
  *
  * @package         Tka_Extras
  */

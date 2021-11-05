@@ -1,11 +1,11 @@
 # TKA Extras #
-**Contributors:** [TheWebist](https://profiles.wordpress.org/TheWebist)  
+**Contributors:** [thewebist](https://profiles.wordpress.org/thewebist/)  
 **Donate link:** https://mwender.com/  
 **Tags:** shortcodes  
 **Requires at least:** 5.7  
 **Tested up to:** 5.8.1  
 **Requires PHP:** 7.4  
-**Stable tag:** 0.9.9  
+**Stable tag:** 1.0.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -119,6 +119,10 @@ Add `[webinar_registration_link]` to any event post to link to the Webinar Regis
 ```
 
 ## Changelog ##
+
+### 1.0.0 ###
+* Updating Team Member divider line color to TKA Purple.
+* Updating SASS compile to use NPM `sass` lib.
 
 ### 0.9.9 ###
 * Renaming to "TKA Extras".
